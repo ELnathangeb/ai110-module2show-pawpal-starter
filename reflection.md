@@ -2,72 +2,62 @@
 
 ## 1. System Design
 
-**a. Initial design**
+### a. Initial design
 
-- Briefly describe your initial UML design.
-My initial design included four main classes: Owner, Pet, Task, and Scheduler.The Owner class is responsible for managing one or more pets and providing access to all of their tasks. The Pet class stores information about an individual pet, such as its name, species, and the list of care tasks assigned to it. The Task class represents a single pet care activity, including its name, duration, priority, completion status, and any scheduling information. The Scheduler class is responsible for generating a daily care plan by organizing tasks based on factors such as priority, available time, and owner preferences while also detecting scheduling conflicts.
+My initial design included four main classes: Owner, Pet, Task, and Scheduler. The Owner class manages one or more pets and stores information such as available time and preferences. The Pet class stores information about an individual pet and its list of care tasks. The Task class represents a single pet care activity, including its duration, priority, category, and completion status. The Scheduler class is responsible for generating a daily care plan by organizing tasks based on priority and available time.
 
-- What classes did you include, and what responsibilities did you assign to each?
+### b. Design changes
 
-**b. Design changes**
-
-- Did your design change during implementation?
-- If yes, describe at least one change and why you made it.
+During implementation, I simplified some parts of the scheduler. Instead of implementing a complex scheduling algorithm with exact time slots, I sorted tasks by priority and only scheduled tasks that fit within the owner's available time. This made the project easier to implement while still meeting the core requirements.
 
 ---
 
 ## 2. Scheduling Logic and Tradeoffs
 
-**a. Constraints and priorities**
+### a. Constraints and priorities
 
-- What constraints does your scheduler consider (for example: time, priority, preferences)?
-- How did you decide which constraints mattered most?
+My scheduler considers two main constraints: the owner's available time and each task's priority. High-priority tasks are scheduled first, and tasks are only added if there is enough available time remaining. I chose these constraints because they are the most important for making sure essential pet care tasks are completed.
 
-**b. Tradeoffs**
+### b. Tradeoffs
 
-- Describe one tradeoff your scheduler makes.
-- Why is that tradeoff reasonable for this scenario?
+One tradeoff is that lower-priority tasks may not be included if there is not enough available time. This is reasonable because important tasks like feeding or medication should be completed before optional tasks like grooming or enrichment.
 
 ---
 
 ## 3. AI Collaboration
 
-**a. How you used AI**
+### a. How you used AI
 
-- How did you use AI tools during this project (for example: design brainstorming, debugging, refactoring)?
-- What kinds of prompts or questions were most helpful?
+I used AI to help brainstorm the class design, understand object-oriented programming concepts, debug Python code, and connect my backend classes to the Streamlit interface. The most helpful prompts asked for explanations of errors, suggestions for class structures, and examples of how to connect the UI to my scheduling logic.
 
-**b. Judgment and verification**
+### b. Judgment and verification
 
-- Describe one moment where you did not accept an AI suggestion as-is.
-- How did you evaluate or verify what the AI suggested?
+I did not accept every suggestion immediately. After making changes, I ran my program and my pytest tests to verify that the code worked correctly. If the output or tests did not match my expectations, I revised the implementation before continuing.
 
 ---
 
 ## 4. Testing and Verification
 
-**a. What you tested**
+### a. What you tested
 
-- What behaviors did you test?
-- Why were these tests important?
+I tested task completion, adding tasks to pets, adding pets to owners, generating schedules, and sorting tasks by priority. These tests were important because they verified that the core functionality of my scheduling system worked correctly.
 
-**b. Confidence**
+### b. Confidence
 
-- How confident are you that your scheduler works correctly?
-- What edge cases would you test next if you had more time?
+I am confident that the scheduler works correctly for the scenarios I tested. If I had more time, I would test additional edge cases such as duplicate tasks, tasks with the same priority, owners with no available time, and pets with no scheduled tasks.
 
 ---
 
 ## 5. Reflection
 
-**a. What went well**
+### a. What went well
 
-- What part of this project are you most satisfied with?
+I am most satisfied with successfully connecting my backend scheduling logic to the Streamlit interface so users can interact with the application through a graphical interface.
 
-**b. What you would improve**
+### b. What you would improve
 
-- If you had another iteration, what would you improve or redesign?
+If I had another iteration, I would improve the scheduling algorithm by assigning actual times to tasks, supporting recurring tasks, allowing task editing and deletion, and improving conflict detection.
 
-**c. Key takeaway**
+### c. Key takeaway
 
-- What is one important thing you learned about designing systems or working with AI on this project?
+One important thing I learned is that designing the system before writing code makes implementation much easier. I also learned that AI is most useful when used as a tool for brainstorming, debugging, and learning concepts rather than simply generating complete solutions.
